@@ -1879,7 +1879,7 @@ func main() {
 	var radii []float64
 
 	model_str := "8 2" //for eg. "8 16" if the model has two hidden layers of size 8 x 16. do not include final neurons
-	dirPath := "/Users/hanxu/Desktop/Proof/FairProof-main"
+	dirPath := "/Users/hanxu/Desktop/ZK-Snark/FairProof-main"
 	sens_vals := []int{0, 1}
 	exePath, _ := os.Getwd()
 

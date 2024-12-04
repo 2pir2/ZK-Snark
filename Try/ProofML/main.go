@@ -64,15 +64,16 @@ func NeuralNetworkOutput(weights [][][]float64, biases [][]float64, input []floa
 				rounded = ReLUBigInt(rounded, negativeBoundary)
 				layerOutputs[layerIdx][i] += float64(rounded.Int64())
 			}
+
 		}
+
 	}
 
 	// Print the final layer's output matrix
-	fmt.Println("Final layer output matrix:")
-	for i := 0; i < len(layerOutputs[len(weights)-1]); i++ {
-		fmt.Printf("Neuron %d output: %f\n", i, layerOutputs[len(weights)-1][i])
-	}
-
+	// fmt.Println("Final layer output matrix:")
+	// for i := 0; i < len(layerOutputs[len(weights)-1]); i++ {
+	// 	fmt.Printf("Neuron %d output: %f\n", i, layerOutputs[len(weights)-1][i])
+	// }
 	// Find the maximum value (argmax) in the final layer output
 	maxIdx := 0
 	for i := 1; i < len(layerOutputs[len(weights)-1]); i++ {
@@ -233,7 +234,7 @@ func main() {
 			ComputedOutput: frontend.Variable(computedOutput),
 			Expected:       frontend.Variable(int(paddedOutput[0])),
 		}
-
+		fmt.Println(assignment)
 		var myCircuit ProveModelCircuit
 		witness, err := frontend.NewWitness(assignment, ecc.BN254.ScalarField())
 		if err != nil {
